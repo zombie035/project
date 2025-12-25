@@ -1,0 +1,7 @@
+{
+  "routes": [
+    { "src": "/homes", "dest": "/data/api.js" },
+    { "src": "/favourite", "dest": "/data/api.js" },
+    { "src": "/(.*)", "dest": "/" }
+  ]
+}
