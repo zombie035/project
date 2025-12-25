@@ -1,10 +1,53 @@
 <%- include('../partials/head') %>
-  </head>
-  <body>
-    <%- include('../partials/nav') %>
-    <main class="container mx-auto mt-20 text-center">
-      <h2 class="text-6xl font-bold text-red-500 mb-4">My Bookings</h2>
-      <p class="text-2xl text-gray-700 mb-8">Bookings will appear here</p>
-    </main>
-  </body>
+<style>
+  .bg-crimson { background-color: #990000; }
+  .text-crimson { color: #990000; }
+  .border-crimson { border-color: #990000; }
+  .bg-crimson-light { background-color: #fff5f5; }
+</style>
+</head>
+
+<body class="bg-gray-50 min-h-screen font-sans">
+  <%- include('../partials/nav') %>
+
+  <main class="container mx-auto mt-16 px-4 max-w-4xl">
+    <div class="bg-white rounded-3xl shadow-2xl overflow-hidden border border-gray-100">
+      
+      <div class="h-2 bg-crimson"></div>
+
+      <div class="p-12 md:p-20 text-center">
+        <div class="inline-flex items-center justify-center w-24 h-24 bg-crimson-light rounded-full mb-8 animate-pulse">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-crimson" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+          </svg>
+        </div>
+
+        <h1 class="text-4xl md:text-5xl font-black text-gray-900 mb-4 tracking-tight">
+          My <span class="text-crimson">Bookings</span>
+        </h1>
+
+        <div class="w-16 h-1 bg-crimson/20 mx-auto mb-6 rounded-full"></div>
+
+        <p class="text-lg text-gray-500 max-w-md mx-auto leading-relaxed mb-10">
+          Your upcoming adventures and stays will be displayed here once you've made a reservation.
+        </p>
+
+        <div class="flex flex-col md:flex-row gap-4 justify-center">
+          <a href="/homes" class="inline-flex items-center justify-center px-8 py-4 bg-crimson text-white font-bold rounded-2xl shadow-lg hover:bg-[#7a0000] transform hover:-translate-y-1 transition-all duration-300">
+            Explore Stays
+          </a>
+          <a href="/" class="inline-flex items-center justify-center px-8 py-4 bg-white text-crimson border-2 border-crimson font-bold rounded-2xl hover:bg-crimson-light transition-all duration-300">
+            Back to Home
+          </a>
+        </div>
+      </div>
+
+      <div class="bg-gray-50 py-4 border-t border-gray-100">
+        <p class="text-xs text-gray-400 uppercase tracking-widest font-semibold">
+          Secure Booking System &bull; Airbnb Crimson
+        </p>
+      </div>
+    </div>
+  </main>
+</body>
 </html>

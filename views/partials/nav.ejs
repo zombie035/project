@@ -1,48 +1,122 @@
-<header class="bg-red-500 text-white p-4 shadow-md">
-  <nav class="container mx-auto flex justify-between items-center">
-    <ul class="flex space-x-4">
+<style>
+  .bg-crimson { background-color: #990000; }
+  .bg-crimson-dark { background-color: #7a0000; }
+  .text-crimson { color: #990000; }
+  
+  .nav-active { 
+    position: relative;
+    color: white !important;
+  }
+  /* Active indicator for desktop */
+  @media (min-width: 768px) {
+    .nav-active::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 1rem;
+      right: 1rem;
+      height: 3px;
+      background-color: white;
+      border-radius: 99px;
+    }
+  }
+  /* Active indicator for mobile */
+  @media (max-width: 767px) {
+    .nav-active {
+      background-color: rgba(255, 255, 255, 0.1);
+      border-left: 4px solid white;
+      border-radius: 0 8px 8px 0;
+    }
+  }
+</style>
+
+<header class="bg-crimson text-white shadow-xl sticky top-0 z-50">
+  <nav class="container mx-auto px-4 md:px-6 py-3 md:py-4 flex justify-between items-center">
+    
+    <div class="flex items-center space-x-2">
+      <div class="bg-white p-1 md:p-1.5 rounded-lg">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" class="w-6 h-6 md:w-7 md:h-7 fill-[#990000]">
+          <path d="M16 1c2.008 0 3.463.963 4.751 3.269l.533 1.025c1.954 3.83 6.114 12.54 7.1 14.836l.145.353c.667 1.591.91 2.472.96 3.396l.01.415.001.228c0 4.062-2.877 6.478-6.357 6.478-2.224 0-4.556-1.258-6.709-3.386l-.257-.26-.172-.179h-.011l-.176.185c-2.044 2.1-4.392 3.42-6.72 3.42-3.481 0-6.358-2.416-6.358-6.478l.002-.485c.046-.884.29-1.767.95-3.322L3.52 19.13c.987-2.297 5.147-11.007 7.103-14.84l.533-1.022C12.443 2.057 13.911 1 16 1zm0 2c-1.232 0-2.046.593-2.99 2.279l-.533 1.023C10.51 9.074 6.338 17.817 5.37 20.088l-.155.363c-.563 1.32-.76 2.04-.801 2.76L4.411 23.5l-.001.228c0 2.871 1.932 4.478 4.357 4.478 1.83 0 3.832-1.077 5.682-2.911l.243-.243.682-.68.727.728c1.884 1.813 3.864 2.89 5.683 2.89 2.425 0 4.357-1.607 4.357-4.478l-.002-.338c-.035-.688-.231-1.405-.791-2.738L26.63 20.09c-.968-2.271-5.137-11.012-7.103-14.86l-.533-1.024C18.046 2.593 17.232 3 16 3z"></path>
+        </svg>
+      </div>
+      <a href="/" class="text-xl md:text-2xl font-black tracking-tighter hover:opacity-90 transition">
+        airbnb<span class="font-light">crimson</span>
+      </a>
+    </div>
+
+    <ul class="hidden md:flex items-center space-x-1 font-medium">
+      <li><a href="/" class="px-4 py-2 rounded-lg transition duration-200 <%= currentPage === 'index' ? 'nav-active' : 'hover:bg-white/10' %>">Explore</a></li>
+      <li><a href="/homes" class="px-4 py-2 rounded-lg transition duration-200 <%= currentPage === 'Home' ? 'nav-active' : 'hover:bg-white/10' %>">Homes</a></li>
+      <li><a href="/favourites" class="px-4 py-2 rounded-lg transition duration-200 <%= currentPage === 'favourites' ? 'nav-active' : 'hover:bg-white/10' %>">Favourites</a></li>
+      <li><a href="/bookings" class="px-4 py-2 rounded-lg transition duration-200 <%= currentPage === 'bookings' ? 'nav-active' : 'hover:bg-white/10' %>">Bookings</a></li>
+      <div class="h-6 w-px bg-white/20 mx-2"></div>
+      <li><a href="/host/host-home-list" class="px-4 py-2 rounded-lg transition duration-200 <%= currentPage === 'host-homes' ? 'nav-active' : 'hover:bg-white/10' %>">Manage</a></li>
       <li>
-        <a
-          href="/"
-          class="<%= currentPage === 'index' ? 'bg-red-400' : 'hover:bg-red-400' %> py-2 px-4 rounded transition duration-300"
-          >airbnb</a
-        >
-      </li>
-      <li>
-        <a
-          href="/homes"
-          class="<%= currentPage === 'Home' ? 'bg-red-400' : 'hover:bg-red-400' %> py-2 px-4 rounded transition duration-300"
-          >Homes-List</a
-        >
-      </li>
-      <li>
-        <a
-          href="/favourites"
-          class="<%= currentPage === 'favourites' ? 'bg-red-400' : 'hover:bg-red-400' %> py-2 px-4 rounded transition duration-300"
-          >Favourites</a
-        >
-      </li>
-      <li>
-        <a
-          href="/bookings"
-          class="<%= currentPage === 'bookings' ? 'bg-red-400' : 'hover:bg-red-400' %> py-2 px-4 rounded transition duration-300"
-          >Bookings</a
-        >
-      </li>
-      <li>
-        <a
-          href="/host/host-home-list"
-          class="<%= currentPage === 'host-homes' ? 'bg-red-400' : 'hover:bg-red-400' %> py-2 px-4 rounded transition duration-300"
-          >Host Homes</a
-        >
-      </li>
-      <li>
-        <a
-          href="/host/add-home"
-          class="<%= currentPage === 'addHome' ? 'bg-red-400' : 'hover:bg-red-400' %> py-2 px-4 rounded transition duration-300"
-          >Add Home</a
-        >
+        <a href="/host/add-home" class="ml-2 bg-white text-crimson px-5 py-2.5 rounded-full font-bold shadow-lg hover:bg-gray-100 hover:scale-105 transform transition duration-300">
+          Add Home
+        </a>
       </li>
     </ul>
+
+    <div class="md:hidden">
+      <button id="mobile-btn" class="p-2.5 rounded-xl bg-white/10 border border-white/20 active:scale-95 transition-all duration-200 group">
+        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16m-7 6h7"></path>
+        </svg>
+      </button>
+    </div>
   </nav>
+
+  <div id="mobile-overlay" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-[60] hidden transition-opacity duration-300 opacity-0"></div>
+  
+  <div id="mobile-drawer" class="fixed top-0 right-0 h-full w-[280px] bg-crimson-dark z-[70] shadow-2xl transform translate-x-full transition-transform duration-300 ease-in-out">
+    <div class="p-6">
+      <div class="flex justify-between items-center mb-8">
+        <span class="font-bold text-xl uppercase tracking-widest">Menu</span>
+        <button id="close-btn" class="p-2 hover:bg-white/10 rounded-full">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12"></path></svg>
+        </button>
+      </div>
+      
+      <ul class="flex flex-col space-y-4 font-semibold">
+        <li><a href="/" class="block px-4 py-3 rounded-lg <%= currentPage === 'index' ? 'nav-active' : 'hover:bg-white/10' %>">Explore</a></li>
+        <li><a href="/homes" class="block px-4 py-3 rounded-lg <%= currentPage === 'Home' ? 'nav-active' : 'hover:bg-white/10' %>">Homes</a></li>
+        <li><a href="/favourites" class="block px-4 py-3 rounded-lg <%= currentPage === 'favourites' ? 'nav-active' : 'hover:bg-white/10' %>">Favourites</a></li>
+        <li><a href="/bookings" class="block px-4 py-3 rounded-lg <%= currentPage === 'bookings' ? 'nav-active' : 'hover:bg-white/10' %>">Bookings</a></li>
+        <div class="h-px bg-white/10 my-2"></div>
+        <li><a href="/host/host-home-list" class="block px-4 py-3 rounded-lg <%= currentPage === 'host-homes' ? 'nav-active' : 'hover:bg-white/10' %>">Manage Homes</a></li>
+        <li class="pt-4">
+          <a href="/host/add-home" class="block w-full bg-white text-crimson text-center py-4 rounded-xl font-bold shadow-lg active:scale-95 transition-all">
+            + Add New Home
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
 </header>
+
+<script>
+  const mobileBtn = document.getElementById('mobile-btn');
+  const closeBtn = document.getElementById('close-btn');
+  const drawer = document.getElementById('mobile-drawer');
+  const overlay = document.getElementById('mobile-overlay');
+
+  function toggleMenu() {
+    const isOpen = !drawer.classList.contains('translate-x-full');
+    if (isOpen) {
+      drawer.classList.add('translate-x-full');
+      overlay.classList.add('hidden');
+      overlay.classList.remove('opacity-100');
+      document.body.style.overflow = ''; // Re-enable scroll
+    } else {
+      drawer.classList.remove('translate-x-full');
+      overlay.classList.remove('hidden');
+      setTimeout(() => overlay.classList.add('opacity-100'), 10);
+      document.body.style.overflow = 'hidden'; // Disable scroll
+    }
+  }
+
+  mobileBtn.addEventListener('click', toggleMenu);
+  closeBtn.addEventListener('click', toggleMenu);
+  overlay.addEventListener('click', toggleMenu);
+</script>
